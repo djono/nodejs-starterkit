@@ -1,10 +1,16 @@
 const mysql = require('mysql2');
 
-const pool = mysql.createPool({
+const config={
     host: 'localhost',
     user: 'root',
-    database: 'layananw_syx_snippet',
-    password: 'syndr0mx'
-});
+    password: 'syndr0mx',
+    database: 'syx_starterkit'
+}
 
-module.exports = pool.promise();
+const pool = mysql.createPool(config);
+// pool.connect((err)=>{
+//     if(err) throw err;
+// });
+
+module.exports = pool;
+//module.exports.config=config;

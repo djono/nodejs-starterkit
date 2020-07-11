@@ -1,24 +1,29 @@
 const http=require('http');
+const path=require('path');
 const express=require('express');
-const bodyparser=require('body-parser');
-const mysql=require('mysql2');
-const ejs=require('ejs');
-
+const bodyParser=require('body-parser');
+//const mysql=require('mysql2');
+//const ejs=require('ejs');
+const port=8000;
+const base_url=express.static(path.join(__dirname,'public'));
 const app=express();
+const mainMenu={'Home':'/','About':'/about','Contact':'/contact'};
 
-const mainRoutes = require('./routes/main');
-const adminRoutes = require('./routes/admin');
+const mainRoutes = require('./routes/mainRouter');
+const adminRoutes = require('./routes/adminRouter');
 const errorController = require('./routes/error');
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
+app.use(base_url);
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.set('menu',mainMenu);
 app.use(mainRoutes);
-app.use('/backend',adminRoutes.handler);
+app.use(adminRoutes);
+
 
 app.use(errorController.get404);
 
 const server=http.createServer(app);
 
-server.listen(3000);
+server.listen(port);

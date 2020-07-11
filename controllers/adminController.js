@@ -1,33 +1,34 @@
 const fs=require('fs');
-const express=require('express');
-const adminModel=require('../models/admin');
 const errorController = require('../routes/error');
+const userModel=require('../models/userModel');
 
-const app=express();
+exports.userDB=class{
+     static saveTable=(req,res,next)=>{
+          username=req.params.username;
+          password=req.params.password;
+          userModel.crud.saveData(null,username,password)
+          .then((result)=>{
+               if(result) {
+                    res.statusCode=200;
+                    res.setHeader('Content-Type','text/json');
+                    res.write(JSON.stringify([result=>1,message=>'Data has been saved successfully']));
+                    res.end();
+               } else {
+                    res.statusCode=200;
+                    res.setHeader('Content-Type','text/json');
+                    res.write(JSON.stringify([result=>1,message=>'Data has been failed to save']));
+                    res.end();
+               }
+          })
+          .catch(err=>errorController.getDataNotFound);
+     }
 
-const saveTable=(req,res,next)=>{
-     adminModel.crud.saveData()
-     .then((result)=>{
-          if(result) {
-               res.statusCode=200;
-               res.setHeader('Content-Type','text/json');
-               res.write(JSON.stringify([result=>1,message=>'Data has been saved successfully']));
-               res.end();
-          } else {
-               res.statusCode=200;
-               res.setHeader('Content-Type','text/json');
-               res.write(JSON.stringify([result=>1,message=>'Data has been failed to save']));
-               res.end();
-          }
-     })
-     .catch(err=>errorController.getDataNotFound);
+     static updateTable=(req,res,next)=>{
+
+     }
 }
 
-const updateTable=(req,res,next)=>{
-
-}
-
-const adminURL=(req,res)=>{
+exports.adminURL=(req,res)=>{
      console.log(req.headers,'\n\r',req.method,'\n\r',req.url);
      if(req.url==='/stop'){
           process.exit();
