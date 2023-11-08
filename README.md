@@ -1,4 +1,4 @@
-NODE JS STARTER KIT v0.9
+NODE JS STARTER KIT v1.0
 -------------------------
 
 This project was intended to set node-js project up easyly.
@@ -13,6 +13,8 @@ It has MVC Approachment.
 - Font-Awesome
 - jQuery (CDN)
 
-This project for ~~private~~ public purpose ~~only~~. Use it at your own risk.
-Written by Djono A. 2020.
+**NOW!!** This project is opened for ~~private~~ public purpose ~~only~~. <br>
+Use it at your own risk. <br>
+<br>
+Written by Djono A. 2020. <br>
 Contact: info@mazjohn.com
