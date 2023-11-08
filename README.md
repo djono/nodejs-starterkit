@@ -13,6 +13,6 @@ It has MVC Approachment.
 - Font-Awesome
 - jQuery (CDN)
 
-This project for private purpose only.
-Written by Djono Amidjojo. 2020.
-Contact: djono@layanan.web.id
+This project for ~~private~~ public purpose ~~only~~. Use it at your own risk.
+Written by Djono A. 2020.
+Contact: info@mazjohn.com
